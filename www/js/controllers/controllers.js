@@ -464,7 +464,7 @@ angular.module('plumberFinder.controllers', [])
             $scope.review.type = 'client2contractor';
             $scope.review.clientId = $scope.fromUserId;
             $scope.review.contractorId = $scope.toUserId;
-        } else if ($scope.userType.toLowerCase() == 'Contractors') {
+        } else if ($scope.userType.toLowerCase() == 'contractors') {
             $scope.review.type = 'contractor2client';
             $scope.review.clientId = $scope.toUserId;
             $scope.review.contractorId = $scope.fromUserId;
