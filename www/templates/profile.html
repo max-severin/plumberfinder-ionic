@@ -1,0 +1,34 @@
+<ion-view view-title="{{user.firstname}} {{user.lastname}}">
+  <ion-content>
+      <div class="row">
+        <div class="col">
+            <p class="text-center">
+                <img src="img/client.png" >
+            </p>         
+        </div>
+        <div class="col">
+            <div class="profile-rating {{user.ratingClass}}" ng-if="user.reviews.length > 0">{{user.rating}}</div>  
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+            <h1 class="text-center">{{user.firstname}} {{user.lastname}}</h1>
+            <h4 class="text-center">{{user.phone}}</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+            <ul class="list-unstyled">
+                <li ng-repeat="review in user.reviews | orderBy:'-createdAt'">
+                  <h3>{{review.user.firstname}} {{job.user.lastname}}</h3>
+                  <h4 ng-if="(review.user.type == 'clients')"><a ui-sref="app.client({id: review.user.id})">{{review.user.firstname}} {{review.user.lastname}}</a> {{review.createdAt | date:'MMM. dd, yyyy H:m'}}</h4>
+                  <h4 ng-if="(review.user.type == 'Contractors')"><a ui-sref="app.contractor({id: review.user.id})">{{review.user.firstname}} {{review.user.lastname}}</a> {{review.createdAt | date:'MMM. dd, yyyy H:m'}}</h4>
+                  <p>{{review.publicRating}} Stars</p>
+                  <blockquote>{{review.comment}}</blockquote>
+                </li>
+            </ul>         
+        </div>
+      </div>
+  </ion-content>
+</ion-view>

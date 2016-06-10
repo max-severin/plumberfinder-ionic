@@ -1,0 +1,37 @@
+<ion-view view-title="My Jobs">
+  <ion-content>
+      <div class="row">
+        <div class="col">
+            <ul class="list-unstyled">
+                <li ng-repeat="job in jobs | orderBy:'-createdAt'" ng-class="{'done-job': job.review.comment}">
+                    <h3>{{job.name}}</h3>
+
+                    <h4>
+                        <a ui-sref="app.client({id: job.clientId})" ng-if="(userType == 'contractors')">{{job.client.firstname}} {{job.client.lastname}}</a>
+                        {{job.createdAt | date:'MMM. dd, yyyy H:m'}}
+                    </h4>
+
+                    <p>{{job.description}}</p>
+
+                    <h4 ng-if="(userType == 'clients') && job.contractor.id">
+                        <a ui-sref="app.contractor({id: job.contractorId})">{{job.contractor.firstname}} {{job.contractor.lastname}}</a>
+                    </h4>
+                    <h4 ng-if="(userType == 'contractors') && (job.contractorId == userId)">
+                        Your message:
+                    </h4>
+
+                    <blockquote ng-if="job.message">{{job.message}}</blockquote>
+
+                    <a href="#/app/user-type-page" ng-if="(userType == 'clients') && job.contractor.id && !job.review.comment" ng-click="giveReview(job.clientId, job.contractor.id, job.id)">
+                        <button class="button button-balanced">Give review to contractor</button>
+                    </a>
+                    <a href="#/app/user-type-page" ng-if="(userType == 'contractors') && job.contractorId && !job.review.comment" ng-click="giveReview(job.contractorId, job.client.id, job.id)">
+                        <button class="button button-balanced">Give review to client</button>
+                    </a>
+
+                </li>
+            </ul>
+        </div>
+      </div>
+  </ion-content>
+</ion-view>

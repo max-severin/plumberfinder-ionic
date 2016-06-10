@@ -1,0 +1,25 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Create a job</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeCreateJob()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="doCreateJob()">
+      <div class="list">
+         <label class="item item-input">
+          <span class="input-label">Title</span>
+          <input type="text" ng-model="job.name">
+        </label>
+         <label class="item item-input">
+          <span class="input-label">Description</span>
+            <textarea class="form-control input-sm" id="description" placeholder="Description" ng-model="job.description" required></textarea>
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Create</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

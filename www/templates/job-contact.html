@@ -1,0 +1,21 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Contact</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeContact()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="doContact()">
+      <div class="list">
+         <label class="item item-input">
+          <span class="input-label">Message</span>
+          <textarea class="form-control input-sm" id="message" placeholder="Message" ng-model="job.message" required></textarea>
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Send</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

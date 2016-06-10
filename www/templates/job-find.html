@@ -1,0 +1,22 @@
+<ion-view view-title="Find a job">
+  <ion-content>
+      <div class="row">
+        <div class="col">
+            <ul class="list-unstyled">
+                <ul class="list-unstyled">
+                    <li ng-repeat="job in jobs | orderBy:'-createdAt'">
+                      <h3>{{job.name}}</h3>
+                      <h4><a ui-sref="app.client({id: job.clientId})">{{job.client.firstname}} {{job.client.lastname}}</a> {{job.createdAt | date:'MMM. dd, yyyy H:m'}}</h4>
+                      <p>{{job.description}}</p>
+                      <p>
+                        <a ng-if="!job.contractorId" ng-click="jobContact(job.id)">
+                            <button class="button button-balanced">Contact</button>
+                        </a>                        
+                      </p>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+      </div>
+  </ion-content>
+</ion-view>
